@@ -181,7 +181,7 @@ guardiao-da-cozinha/
 │   │   └── assets/                  # Imagens e ícones
 │   └── package.json
 │
-├── docs/                            # Documentação do projeto
+├── requisitos/                      # Documentação do projeto
 │   └── Documento_de_Requisitos.pdf
 │
 ├── Padrões Adotados/                # Padrões do projeto
@@ -196,7 +196,7 @@ guardiao-da-cozinha/
 
 | Nome | Função |
 |------|--------|
-| Gilson dosAntos Júnior | Desenvolvimento |
+| Gilson dos Santos Júnior | Desenvolvimento |
 | Izac Moreira Souza Junior    | Desenvolvimento |
 
 ---
