@@ -6,7 +6,10 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      '/categorias': 'http://localhost:3001',
+      '/categorias':    'http://localhost:3001',
+      '/fornecedores':  'http://localhost:3001',
+      '/produtos':      'http://localhost:3001',
+      '/movimentacoes': 'http://localhost:3001',
     },
   },
 });
