@@ -11,6 +11,7 @@
 - [Contexto do Problema e Solução](#-contexto-do-problema-e-solução)
 - [Instruções para Uso](#-instruções-para-uso)
 - [Instruções para Devs](#-instruções-para-devs)
+- [Testes Unitários](#-testes-unitários)
 - [Tecnologias](#-tecnologias)
 - [Organização do Projeto](#-organização-do-projeto)
 - [Equipe](#-equipe)
@@ -137,6 +138,88 @@ http://localhost:3000
   - **Usuário:** `[TODO: ex.: admin@guardiao.com]`
   - **Senha:** `[TODO: ex.: admin123]`
 - ⚠️ Altere a senha imediatamente após o primeiro login.
+
+---
+
+## 💻 Instruções para Devs
+
+> Estas instruções são destinadas a quem deseja **contribuir ou executar o ambiente de desenvolvimento** localmente.
+
+### Pré-requisitos
+
+- Node.js v18+
+- PostgreSQL 15+ rodando localmente
+- Banco de dados `guardiao_da_cozinha` criado (veja o Passo 2 em [Instruções para Uso](#-instruções-para-uso))
+- Arquivo `sistema/backend/.env` configurado (veja o Passo 3)
+
+### Rodar o backend em modo desenvolvimento
+
+```bash
+cd sistema/backend
+npm install
+npm run dev        # reinicia automaticamente ao salvar arquivos (nodemon)
+```
+
+### Rodar o frontend em modo desenvolvimento
+
+```bash
+cd sistema/frontend
+npm install
+npm run dev        # servidor Vite em http://localhost:3000
+```
+
+---
+
+## 🧪 Testes Unitários
+
+Os testes unitários cobrem as regras de negócio das quatro camadas de serviço do backend usando **Jest**.
+
+### Arquivos de teste
+
+```
+sistema/backend/tests/
+├── categoriaService.test.js
+├── fornecedorService.test.js
+├── movimentacaoService.test.js
+└── produtoService.test.js
+```
+
+### Executar todos os testes
+
+```bash
+cd sistema/backend
+npm test
+```
+
+Saída esperada:
+
+```
+PASS tests/categoriaService.test.js
+PASS tests/fornecedorService.test.js
+PASS tests/movimentacaoService.test.js
+PASS tests/produtoService.test.js
+
+Test Suites: 4 passed, 4 total
+Tests:       XX passed, XX total
+```
+
+### Executar com relatório de cobertura
+
+```bash
+cd sistema/backend
+npm run test:coverage
+```
+
+O relatório é exibido no terminal e também salvo em `sistema/backend/coverage/`. Os limiares mínimos exigidos pelo projeto são:
+
+| Métrica    | Mínimo |
+|------------|--------|
+| Linhas     | 80 %   |
+| Funções    | 80 %   |
+| Statements | 80 %   |
+| Branches   | 70 %   |
+
+> Se qualquer limiar não for atingido, o comando retorna código de saída `1` (falha).
 
 ---
 
