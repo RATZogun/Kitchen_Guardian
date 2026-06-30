@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casos de Teste — Guardião da Cozinha</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      color: #1a1a1a;
+      background: #f5f5f5;
+      padding: 32px 24px;
+    }
+
+    /* ── Cabeçalho ── */
+    .header {
+      background: #1e3a6e;
+      color: #fff;
+      padding: 24px 32px;
+      border-radius: 8px 8px 0 0;
+    }
+    .header h1 { font-size: 20px; margin-bottom: 4px; }
+    .header p  { font-size: 12px; opacity: .8; }
+
+    .meta {
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      border-top: none;
+      padding: 12px 32px;
+      display: flex;
+      gap: 32px;
+      font-size: 12px;
+      border-radius: 0 0 8px 8px;
+      margin-bottom: 32px;
+    }
+    .meta span { color: #555; }
+    .meta strong { color: #1a1a1a; }
+
+    /* ── Caso de Teste ── */
+    .caso {
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+
+    .caso-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 20px;
+      background: #1e3a6e;
+      color: #fff;
+    }
+    .caso-id {
+      font-weight: bold;
+      font-size: 14px;
+      background: rgba(255,255,255,.2);
+      padding: 2px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .caso-titulo { font-size: 14px; font-weight: bold; }
+    .caso-rf {
+      margin-left: auto;
+      font-size: 11px;
+      opacity: .85;
+      white-space: nowrap;
+    }
+
+    table.info {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.info td {
+      padding: 9px 20px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    table.info tr:last-child td { border-bottom: none; }
+    table.info td:first-child {
+      width: 190px;
+      font-weight: bold;
+      color: #1e3a6e;
+      background: #f7f9fc;
+      white-space: nowrap;
+    }
+
+    ol.acoes { padding-left: 18px; }
+    ol.acoes li { margin-bottom: 3px; }
+
+    .screenshot-row td { padding: 12px 20px !important; }
+    .screenshot-row img {
+      width: 100%;
+      max-width: 900px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .badge-aprovado  { background: #d4edda; color: #155724; }
+    .badge-reprovado { background: #f8d7da; color: #721c24; }
+
+    .erro-box {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-style: italic;
+      color: #856404;
+      display: inline-block;
+    }
+
+    code {
+      background: #f0f0f0;
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Casos de Teste — Guardião da Cozinha</h1>
+  <p>Testes de Validação / Testes Funcionais de Sistema</p>
+</div>
+
+<div class="meta">
+  <div><span>Projeto: </span><strong>Guardião da Cozinha</strong></div>
+  <div><span>Versão: </span><strong>2.0</strong></div>
+  <div><span>Data de execução: </span><strong>30/06/2026</strong></div>
+  <div><span>Responsável: </span><strong>Gilson dos Santos Júnior / Izac Moreira Souza Junior </strong></div>
+  <div><span>Ambiente: </span><strong>localhost — Backend :3001 · Frontend :3000</strong></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ CT01 ═══ -->
+<div class="caso">
+  <div class="caso-header">
+    <span class="caso-id">CT01</span>
+    <span class="caso-titulo">Cadastrar Categoria com dados válidos</span>
+    <span class="caso-rf">RF002 — Cadastrar Categoria (Fluxo Principal)</span>
+  </div>
+
+  <table class="info">
+    <tr>
+      <td>Funcionalidade</td>
+      <td>Gerenciamento de Categorias — Cadastrar nova categoria</td>
+    </tr>
+    <tr>
+      <td>Ações (passo a passo)</td>
+      <td>
+        <ol class="acoes">
+          <li>Acessar o sistema em <code>http://localhost:3000</code>.</li>
+          <li>A aba <strong>Categorias</strong> já é exibida por padrão na tela inicial.</li>
+          <li>Clicar no botão <strong>+ Nova Categoria</strong> (canto superior direito).</li>
+          <li>No modal "Nova Categoria", preencher o campo <strong>Nome</strong> com <code>Bebidas</code>.</li>
+          <li>Preencher o campo <strong>Descrição</strong> com <code>Sucos, refrigerantes e água</code>.</li>
+          <li>Clicar no botão <strong>Salvar</strong>.</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de entrada</td>
+      <td>
+        <strong>Nome:</strong> <code>Bebidas</code><br/>
+        <strong>Descrição:</strong> <code>Sucos, refrigerantes e água</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de saída esperados</td>
+      <td>
+        Mensagem de confirmação em verde: <em>"Categoria cadastrada com sucesso."</em><br/>
+        Nova linha com nome <strong>Bebidas</strong> e descrição <strong>Sucos, refrigerantes e água</strong> aparece na tabela de categorias.
+      </td>
+    </tr>
+    <tr class="screenshot-row">
+      <td>Print screen da saída</td>
+      <td><img src="screenshots/ct01_04_resultado.png" alt="CT01 resultado" /></td>
+    </tr>
+    <tr>
+      <td>Resultado</td>
+      <td><span class="badge badge-aprovado">APROVADO</span><br/>
+        O sistema exibiu "Categoria cadastrada com sucesso." e a categoria <strong>Bebidas</strong>
+        aparece na listagem ordenada alfabeticamente, conforme especificado em RF002 / RN02.
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ CT02 ═══ -->
+<div class="caso">
+  <div class="caso-header">
+    <span class="caso-id">CT02</span>
+    <span class="caso-titulo">Cadastrar Categoria com nome duplicado</span>
+    <span class="caso-rf">RF002 — Cadastrar Categoria (Fluxo Alternativo 7a)</span>
+  </div>
+
+  <table class="info">
+    <tr>
+      <td>Funcionalidade</td>
+      <td>Gerenciamento de Categorias — Validação de unicidade do nome</td>
+    </tr>
+    <tr>
+      <td>Ações (passo a passo)</td>
+      <td>
+        <ol class="acoes">
+          <li>Acessar o sistema em <code>http://localhost:3000</code> (aba Categorias).</li>
+          <li>Verificar que a categoria <strong>Bebidas</strong> já existe na tabela (criada no CT01).</li>
+          <li>Clicar em <strong>+ Nova Categoria</strong>.</li>
+          <li>Preencher o campo <strong>Nome</strong> com <code>Bebidas</code> (nome já cadastrado).</li>
+          <li>Clicar em <strong>Salvar</strong>.</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de entrada</td>
+      <td><strong>Nome:</strong> <code>Bebidas</code> (duplicado — já existe no banco)</td>
+    </tr>
+    <tr>
+      <td>Dados de saída esperados</td>
+      <td>
+        Mensagem de erro em vermelho dentro do modal: <em>"Já existe uma categoria com este nome."</em><br/>
+        Nenhum novo registro deve ser inserido. O modal permanece aberto.
+      </td>
+    </tr>
+    <tr class="screenshot-row">
+      <td>Print screen da saída</td>
+      <td><img src="screenshots/ct02_02_resultado.png" alt="CT02 resultado" /></td>
+    </tr>
+    <tr>
+      <td>Resultado</td>
+      <td><span class="badge badge-aprovado">APROVADO</span><br/>
+        O sistema exibiu a mensagem de erro esperada e bloqueou a inserção duplicada,
+        respeitando a Regra de Negócio RN02 de RF002 (unicidade do nome — case-insensitive).
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ CT03 ═══ -->
+<div class="caso">
+  <div class="caso-header">
+    <span class="caso-id">CT03</span>
+    <span class="caso-titulo">Cadastrar Categoria com campo Nome vazio</span>
+    <span class="caso-rf">RF002 — Cadastrar Categoria (Regra de Negócio RN01)</span>
+  </div>
+
+  <table class="info">
+    <tr>
+      <td>Funcionalidade</td>
+      <td>Gerenciamento de Categorias — Validação de campo obrigatório</td>
+    </tr>
+    <tr>
+      <td>Ações (passo a passo)</td>
+      <td>
+        <ol class="acoes">
+          <li>Acessar o sistema em <code>http://localhost:3000</code> (aba Categorias).</li>
+          <li>Clicar em <strong>+ Nova Categoria</strong>.</li>
+          <li>Deixar o campo <strong>Nome</strong> completamente vazio (não preencher).</li>
+          <li>Clicar em <strong>Salvar</strong>.</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de entrada</td>
+      <td><strong>Nome:</strong> <code>(vazio)</code><br/><strong>Descrição:</strong> <code>(vazio)</code></td>
+    </tr>
+    <tr>
+      <td>Dados de saída esperados</td>
+      <td>
+        Mensagem de erro em vermelho: <em>"O campo Nome é obrigatório."</em><br/>
+        Nenhum registro inserido. O modal permanece aberto aguardando correção.
+      </td>
+    </tr>
+    <tr class="screenshot-row">
+      <td>Print screen da saída</td>
+      <td><img src="screenshots/ct03_02_resultado.png" alt="CT03 resultado" /></td>
+    </tr>
+    <tr>
+      <td>Resultado</td>
+      <td><span class="badge badge-aprovado">APROVADO</span><br/>
+        O sistema rejeitou a submissão e exibiu a mensagem de validação correta,
+        garantindo a Regra de Negócio RN01 de RF002 (Nome obrigatório, máx. 60 caracteres).
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ CT04 ═══ -->
+<div class="caso">
+  <div class="caso-header">
+    <span class="caso-id">CT04</span>
+    <span class="caso-titulo">Cadastrar Produto com dados válidos</span>
+    <span class="caso-rf">RF006 — Cadastrar Produto (Fluxo Principal)</span>
+  </div>
+
+  <table class="info">
+    <tr>
+      <td>Funcionalidade</td>
+      <td>Gerenciamento de Produtos — Cadastrar novo produto vinculado a uma categoria</td>
+    </tr>
+    <tr>
+      <td>Ações (passo a passo)</td>
+      <td>
+        <ol class="acoes">
+          <li>Acessar o sistema em <code>http://localhost:3000</code>.</li>
+          <li>Clicar na aba <strong>Produtos</strong> na barra de navegação.</li>
+          <li>Clicar no botão <strong>+ Novo Produto</strong>.</li>
+          <li>Preencher o campo <strong>Nome</strong> com <code>Suco de Laranja</code>.</li>
+          <li>Selecionar <strong>Categoria</strong>: <code>Bebidas</code>.</li>
+          <li>Selecionar <strong>Unidade</strong>: <code>l</code> (litro).</li>
+          <li>Preencher <strong>Estoque mínimo</strong> com <code>5</code>.</li>
+          <li>Clicar em <strong>Salvar</strong>.</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de entrada</td>
+      <td>
+        <strong>Nome:</strong> <code>Suco de Laranja</code><br/>
+        <strong>Categoria:</strong> <code>Bebidas</code><br/>
+        <strong>Unidade:</strong> <code>l</code><br/>
+        <strong>Estoque mínimo:</strong> <code>5</code><br/>
+        <strong>Data de validade:</strong> <code>(não informada)</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de saída esperados</td>
+      <td>
+        Mensagem de confirmação em verde: <em>"Produto cadastrado com sucesso."</em><br/>
+        Produto <strong>Suco de Laranja</strong> aparece na listagem com categoria <strong>Bebidas</strong>,
+        saldo <strong>0</strong> e status <strong>Estoque baixo</strong> (saldo ≤ estoque mínimo).
+      </td>
+    </tr>
+    <tr class="screenshot-row">
+      <td>Print screen da saída</td>
+      <td><img src="screenshots/ct04_04_resultado.png" alt="CT04 resultado" /></td>
+    </tr>
+    <tr>
+      <td>Resultado</td>
+      <td><span class="badge badge-aprovado">APROVADO</span><br/>
+        Produto cadastrado com sucesso e vinculado à categoria <strong>Bebidas</strong>.
+        O sistema calculou o saldo inicial como <strong>0</strong> e classificou o status como
+        <strong>Estoque baixo</strong> corretamente (RN02 de RF007: saldo ≤ estoque mínimo).
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ CT05 ═══ -->
+<div class="caso">
+  <div class="caso-header">
+    <span class="caso-id">CT05</span>
+    <span class="caso-titulo">Registrar Saída com quantidade acima do saldo disponível</span>
+    <span class="caso-rf">RF011 — Registrar Saída de Produto (Fluxo Alternativo — Saldo Insuficiente)</span>
+  </div>
+
+  <table class="info">
+    <tr>
+      <td>Funcionalidade</td>
+      <td>Gerenciamento de Movimentações — Impedir saída com estoque insuficiente</td>
+    </tr>
+    <tr>
+      <td>Ações (passo a passo)</td>
+      <td>
+        <ol class="acoes">
+          <li>Acessar o sistema em <code>http://localhost:3000</code>.</li>
+          <li>Clicar na aba <strong>Movimentações</strong> na barra de navegação.</li>
+          <li>Clicar no botão <strong>− Saída</strong>.</li>
+          <li>No modal "Registrar Saída", selecionar o produto <strong>Leite Integral</strong> (saldo atual: 20 l).</li>
+          <li>Preencher o campo <strong>Quantidade</strong> com <code>999</code> (acima do saldo disponível).</li>
+          <li>Manter a data como a data atual.</li>
+          <li>Clicar em <strong>Confirmar</strong>.</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de entrada</td>
+      <td>
+        <strong>Produto:</strong> <code>Leite Integral</code> (saldo = 20 l)<br/>
+        <strong>Quantidade:</strong> <code>999</code><br/>
+        <strong>Data:</strong> <code>30/06/2026</code> (data atual)
+      </td>
+    </tr>
+    <tr>
+      <td>Dados de saída esperados</td>
+      <td>
+        Mensagem de erro em vermelho no modal: <em>"Estoque insuficiente. Saldo atual: 20."</em><br/>
+        Nenhuma movimentação registrada. O modal permanece aberto para correção.
+      </td>
+    </tr>
+    <tr class="screenshot-row">
+      <td>Print screen da saída</td>
+      <td><img src="screenshots/ct05_04_resultado.png" alt="CT05 resultado" /></td>
+    </tr>
+    <tr>
+      <td>Resultado</td>
+      <td><span class="badge badge-aprovado">APROVADO</span><br/>
+        O sistema rejeitou a operação e exibiu corretamente o saldo atual disponível,
+        respeitando a regra de negócio de RF011 que proíbe saídas com quantidade superior ao saldo calculado
+        (Σentradas − Σsaídas na tabela Movimentação).
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>
